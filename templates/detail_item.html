@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Detalhes{% endblock %}
+{% block content %}
+<h1 class="h3 mb-3">Item {{item.id}}</h1>
+<p><strong>Nome:</strong> {{item.nome}}</p>
+<p><strong>Descrição:</strong> {{item.descricao}}</p>
+<p><strong>Preço:</strong> R$ {{ "%.2f"|format(item.preco) }}</p>
+<p><strong>Estoque:</strong> {{ "Sim" if item.em_estoque else "Não" }}</p>
+<a class="btn btn-primary" href="{{url_for('editar_item',item_id=item.id)}}">Editar</a>
+<a class="btn btn-danger" href="{{url_for('deletar_item',item_id=item.id)}}">Excluir</a>
+<a class="btn btn-secondary" href="{{url_for('listar_items')}}">Voltar</a>
+{% endblock %}

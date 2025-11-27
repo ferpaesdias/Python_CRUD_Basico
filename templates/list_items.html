@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Itens{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-between mb-3">
+<h1 class="h3">Itens</h1>
+<a class="btn btn-primary" href="{{ url_for('criar_item') }}">+ Novo</a>
+</div>
+<table class="table table-striped">
+<thead><tr><th>ID</th><th>Nome</th><th>Preço</th><th>Estoque</th><th>Ações</th></tr></thead>
+<tbody>
+{% for item in items %}
+<tr>
+<td>{{item.id}}</td>
+<td><a href="{{url_for('detalhar_item',item_id=item.id)}}">{{item.nome}}</a></td>
+<td>R$ {{ "%.2f"|format(item.preco) }}</td>
+<td>{{"Sim" if item.em_estoque else "Não"}}</td>
+<td>
+<a class="btn btn-sm btn-secondary" href="{{url_for('editar_item',item_id=item.id)}}">Editar</a>
+<a class="btn btn-sm btn-danger" href="{{url_for('deletar_item',item_id=item.id)}}">Excluir</a>
+</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+{% endblock %}

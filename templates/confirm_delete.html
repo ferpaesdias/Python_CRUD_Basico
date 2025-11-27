@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Excluir{% endblock %}
+{% block content %}
+<h1 class="h3 mb-3 text-danger">Excluir Item</h1>
+<p>Tem certeza que deseja excluir <strong>{{item.nome}}</strong>?</p>
+<form method="post">
+<button class="btn btn-danger">Excluir</button>
+<a class="btn btn-secondary" href="{{url_for('listar_items')}}">Cancelar</a>
+</form>
+{% endblock %}

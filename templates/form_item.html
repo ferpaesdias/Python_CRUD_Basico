@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}{{acao}} Item{% endblock %}
+{% block content %}
+<h1 class="h3 mb-3">{{acao}} Item</h1>
+<form method="post">
+<label>Nome</label>
+<input class="form-control" name="nome" value="{{item.nome if item else ''}}">
+<label>Descrição</label>
+<textarea class="form-control" name="descricao">{{item.descricao if item else ''}}</textarea>
+<label>Preço</label>
+<input class="form-control" name="preco" value="{{item.preco if item else ''}}">
+<label><input type="checkbox" name="em_estoque" {% if item is none or item.em_estoque %}checked{% endif %}> Em estoque</label>
+<br><br>
+<button class="btn btn-success">{{acao}}</button>
+<a class="btn btn-secondary" href="{{url_for('listar_items')}}">Cancelar</a>
+</form>
+{% endblock %}
